@@ -6,10 +6,31 @@ output: html_document
 ---
 
 ```{r setup, include=TRUE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(plotly)
 library(DT)
 library(tidyverse)
 library(palmerpenguins)
 ```
+
+```{r}
+# Lab comments:
+# whatever you have in specific code chunk header overrides global options
+# html in gitignore so it will not get tracked with version control, doesn't matter because code exists in Rmd and is reproducible 
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+
+penguins_graph
+```
+
+```{r}
+# interactive plot
+ggplotly(penguins_graph) 
+```
+
+```{r}
+# searchable data table
+datatable(penguins)
+```
+
 
